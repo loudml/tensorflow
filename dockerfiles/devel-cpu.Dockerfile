@@ -19,9 +19,7 @@
 # throughout. Please refer to the TensorFlow dockerfiles documentation
 # for more information.
 
-ARG UBUNTU_VERSION=18.04
-
-FROM ubuntu:${UBUNTU_VERSION} AS base
+FROM ubuntu:18.04
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         build-essential \
@@ -98,7 +96,7 @@ RUN ${PIP} --no-cache-dir install \
     enum34
 
 # Install bazel
-ARG BAZEL_VERSION=0.24.1
+ARG BAZEL_VERSION=0.19.2
 RUN mkdir /bazel && \
     wget -O /bazel/installer.sh "https://github.com/bazelbuild/bazel/releases/download/${BAZEL_VERSION}/bazel-${BAZEL_VERSION}-installer-linux-x86_64.sh" && \
     wget -O /bazel/LICENSE.txt "https://raw.githubusercontent.com/bazelbuild/bazel/master/LICENSE" && \
